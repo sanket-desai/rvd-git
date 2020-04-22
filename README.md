@@ -1,0 +1,49 @@
+# Raman spectroscopy based RNA Virus Detector (RVD)
+
+A GUI based tool to predict RNA virus positivity of a sample based on the Raman spectra files (SPC). 
+
+## About SPC data format
+
+SPC is a binary data format to store a variety of spectral data, developed by Galactic Industries Corporation in the '90s. Popularly used Thermo Fisher/Scientific software GRAMS/AI. Also used by others including Ocean Optics, Jobin Yvon Horiba. Can store a variety of spectrum including FT-IR, UV-VIS, X-ray Diffraction, Mass Spectroscopy, NMR, Raman and Fluorescence spectra.
+
+
+## Requirements
+
+```
+python2.7+
+Python packages:
+	- numpy
+	- Tkinter
+R ( version > 3.5)
+R-packages:
+	- tidyverse
+	- caret
+	- MASS	
+```
+## Installation
+
+Download zip and extract or clone repository. From the resulting folder the main start program is src/rvd-gui.py. There is no need to run any installer for this program.
+
+
+## Usage
+
+```bash
+$ cd rvd-git
+$ python src/rvd-gui.py
+```
+GUI starts up, wherein you need to provide the input directory with SPC files, project name and output directory.
+
+## Output
+
+The results are stored in the output directory in the file ending with "_predict.csv". For a project name, "ananalysis" the output file name of the prediction in the output directory would be "analysis_prediction.csv". The CSV file can be opened in any editor or spreadsheet / excel program.
+
+The output file contains following columns:
+1. Sample name (file name)
+2. Prediction (virus_positive / virus_negative)
+3. Posterior probability of sample being virus negative
+4. Posterior probability of sample being virus positive
+5. Linear discriminant score (positive score indicates sample positivity)
+
+## References
+
+[1] "Thermo Scientific SPC File Format." Thermo Fisher Scientific, Web. 20 July 2014\. <http://ftirsearch.com/features/converters/SPCFileFormat.htm>.

@@ -1,0 +1,3 @@
+,prediction,prob.neg,prob.pos,lin.disc.score
+virusneg1.csv,virus_negative,1,1.33062673525549e-20,-5.81815992479621
+virusneg2.csv,virus_negative,1,4.58753573755977e-20,-5.62213562386787

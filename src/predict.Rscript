@@ -1,0 +1,35 @@
+#!/usr/bin/env Rscript
+
+library(tidyverse)
+get_this_file <- function(){
+    commandArgs() %>%
+       tibble::enframe(name=NULL) %>%
+       tidyr::separate(col=value, into=c("key", "value"), sep="=", fill='right') %>%
+       dplyr::filter(key == "--file") %>%
+       dplyr::pull(value)
+}
+this_file <- get_this_file()
+print(paste0(dirname(this_file), "/params.RData"))
+load(paste0(dirname(this_file), "/params.RData"))
+
+args = commandArgs(trailingOnly=TRUE)
+if(length(args) < 2){stop("Input and output file name required as arguments!!")} else if(length(args)==2){
+library(magrittr)
+library(MASS)
+library(caret)
+theme_set(theme_classic())
+inputfile=args[1]
+outputfile=args[2]
+neg.ldamat=read.csv(inputfile, header=T, row.names=1)
+neg.ldamat.ndata=neg.ldamat[,-1201]
+neg.ldamat.1003c=t(apply(neg.ldamat.ndata, 1, function(x){ x/x[404]; }))
+neg.ldamat.1003c=cbind.data.frame(neg.ldamat.ndata, neg.ldamat$class)
+colnames(neg.ldamat.1003c)[1201]="class"
+neg.ldamat.1003c.pctop50=neg.ldamat.1003c[,pc1.pc2.top50.features.union.1003cor]
+neg.ldamat.1003c.pctop50=cbind.data.frame(neg.ldamat.1003c.pctop50, neg.ldamat.1003c$class)
+colnames(neg.ldamat.1003c.pctop50)[66]="class"
+neg.test.transformed=preproc.param %>% predict(neg.ldamat.1003c.pctop50)
+neg.predictions <- model %>% predict(neg.test.transformed)
+neg.output=cbind(as.character(neg.predictions$class), neg.predictions$posterior, neg.predictions$x)
+colnames(neg.output)=c("prediction","prob.neg","prob.pos","lin.disc.score")
+write.csv(neg.output, file=outputfile, quote=F) }
