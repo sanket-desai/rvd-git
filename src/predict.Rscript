@@ -32,8 +32,9 @@ colnames(neg.ldamat.1003c)[1201]="class"
 neg.ldamat.1003c.pctop50=neg.ldamat.1003c[,pc1.pc2.top50.features.union.1003cor]
 neg.ldamat.1003c.pctop50=cbind.data.frame(neg.ldamat.1003c.pctop50, neg.ldamat.1003c$class)
 colnames(neg.ldamat.1003c.pctop50)[66]="class"
-neg.test.transformed=preproc.param %>% predict(neg.ldamat.1003c.pctop50)
-neg.predictions <- model %>% predict(neg.test.transformed)
+#neg.test.transformed=preproc.param %>% predict(neg.ldamat.1003c.pctop50)
+#neg.predictions <- model %>% predict(neg.test.transformed)
+neg.predictions <- model %>% predict(neg.ldamat.1003c.pctop50)
 neg.output=cbind(as.character(neg.predictions$class), neg.predictions$posterior, neg.predictions$x)
 colnames(neg.output)=c("prediction","prob.neg","prob.pos","lin.disc.score")
 write.csv(neg.output, file=outputfile, quote=F) }
