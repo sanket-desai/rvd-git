@@ -35,6 +35,15 @@ colnames(neg.ldamat.1003c.pctop50)[66]="class"
 #neg.test.transformed=preproc.param %>% predict(neg.ldamat.1003c.pctop50)
 #neg.predictions <- model %>% predict(neg.test.transformed)
 neg.predictions <- model %>% predict(neg.ldamat.1003c.pctop50)
-neg.output=cbind(as.character(neg.predictions$class), neg.predictions$posterior, neg.predictions$x)
-colnames(neg.output)=c("prediction","prob.neg","prob.pos","lin.disc.score")
+#neg.output=cbind(as.character(neg.predictions$class), neg.predictions$posterior, neg.predictions$x)
+resultvec=c()
+i=1
+for( p in as.character(neg.predictions$class)){
+ if( p == "virus_positive"){ resultvec[i]="YES";
+ } else {
+ resultvec[i]="NO"; }
+ i=i+1; }
+neg.output=cbind.data.frame( rownames(neg.predictions$x) , resultvec  )
+#colnames(neg.output)=c("prediction","prob.neg","prob.pos","lin.disc.score")
+colnames(neg.output)=c("sample","viruspositive")
 write.csv(neg.output, file=outputfile, quote=F) }
