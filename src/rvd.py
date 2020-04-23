@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-RVD - Raman based RNA Virus Detection
+RVD - Raman spectra based RNA Virus Detection tool
 
-author: Sanket Desai
-date  : 22/04/2020
-email : desai[dot]sanket12[at]gmail[dot]com
-
+author : Sanket Desai
+date   : 22/04/2020
+email  : desai[dot]sanket12[at]gmail[dot]com
+licence: GNU GPL (refer to README of the project for details)
 """
 from __future__ import division, absolute_import, unicode_literals, print_function
 from Tkinter import Tk, StringVar, DISABLED, NORMAL, END, W, E, N, S
@@ -29,7 +29,7 @@ class ProcessSPC:
         self.screen1=None
         master.title("RVD")
         #mf = Frame(master, padding="20")
-        master.geometry('550x300')
+        master.geometry('575x300')
         #self.menu=Menu(master)
         #file_item=Menu(self.menu)
 
@@ -41,8 +41,10 @@ class ProcessSPC:
         mf.grid(column=0, row=0, sticky=(N, W, E, S))
         mf.columnconfigure(0, weight=1)
         mf.rowconfigure(0, weight=1)
-        self.infomessage = "Raman spectra based RNA Virus Detection (RVD) program\nDeveloped by Dr. Amit Dutt laboratory\n"
+        self.infomessage = "Raman spectra based RNA Virus Detection (RVD) program\n"
+        self.developer= "\nDeveloped by Sanket Desai, Dutt laboratory, TMC-ACTREC"
         self.infolabel_text=StringVar()
+        self.developer_text=StringVar()
         self.proname=StringVar()
         self.message = "Enter folder containing *.SPC files"
         self.label_text = StringVar()
@@ -51,8 +53,10 @@ class ProcessSPC:
         self.outputdir=StringVar()
         self.prolabel= Label(mf, text="Project name")
         self.infolabel_text.set(self.infomessage)
+        self.developer_text.set(self.developer)
         self.label_text.set(self.message)
         self.ilabel=Label(mf, textvariable=self.infolabel_text)
+        self.developerlabel=Label(mf, textvariable=self.developer_text)
         self.label = Label(mf, textvariable=self.label_text)
         self.folder_label = Label(mf, text="Input Directory")
         self.output_folder_label=Label(mf, text="Output Directory")
@@ -82,6 +86,7 @@ class ProcessSPC:
         self.folder_entry2.grid(row=5, column=2,columnspan=2, sticky= W + E)
         self.sel_foler2.grid(row=5, column=4, sticky=W)
         self.convert_btn.grid(row=6, column=2, columnspan=2, sticky=W + E)
+        self.developerlabel.grid(row=7, column=2, sticky=E)
         for child in mf.winfo_children():
             child.grid_configure(padx=5, pady=5)
 
@@ -128,7 +133,7 @@ class ProcessSPC:
         sampleinfo={}
         testind=1
         for f in onlyfilename:
-            sampleinfo[f]="test"+str(testind)
+            sampleinfo[f.replace(".spc",".csv")]="test"+str(testind)
             testind=testind+1
         print(sampleinfo)
         self.csvtoldamatrix(ffn, sampleinfo, outfol_val )

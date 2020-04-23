@@ -1,4 +1,8 @@
 #!/usr/bin/env Rscript
+#Author: Sanket S Desai
+#Date:   23/04/2020
+#Email:  desai{dot}sanket12{at}gmail{dot}com
+#Licence: GNU GPL (Refer to README of the project)
 
 library(tidyverse)
 get_this_file <- function(){
