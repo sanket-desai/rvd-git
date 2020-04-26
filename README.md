@@ -39,14 +39,11 @@ User is required to fill the following fields and press <i>Submit</i> to begin p
 
 ## Output
 
-The results are stored in the output directory in the file ending with "_predict.csv". For a project name, "ananalysis" the output file name of the prediction in the output directory would be "analysis_prediction.csv". The CSV file can be opened in any editor or spreadsheet / excel program.
+The results are stored in the output directory in the file ending with "_predict.csv". For a project name, "analysis" the output file name of the prediction in the output directory would be "analysis_prediction.csv". The CSV file can be opened in any editor or spreadsheet / excel program.
 
 The output file contains following columns:
 1. Sample name (file name)
-2. Prediction (virus_positive / virus_negative)
-3. Posterior probability of sample being virus negative
-4. Posterior probability of sample being virus positive
-5. Linear discriminant score (positive score indicates sample positivity)
+2. Prediction (virus positivity) - Yes / No
 
 ## References
 
