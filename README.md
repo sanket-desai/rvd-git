@@ -35,9 +35,9 @@ GUI starts up, wherein you need to provide the input directory with SPC files, p
 ## GUI usage
 User is required to fill the following fields and press <i>Submit</i> to begin processing:
 
-![rvdgui]
-(https://github.com/sanket-desai/rvd-git/raw/master/RVD_GUI.jpg)
+![RVD GUI](https://github.com/sanket-desai/rvd-git/raw/master/RVD_GUI.jpg)
 
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
 
 ## Output
 
