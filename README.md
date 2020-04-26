@@ -37,8 +37,6 @@ User is required to fill the following fields and press <i>Submit</i> to begin p
 
 ![RVD GUI](https://github.com/sanket-desai/rvd-git/raw/master/RVD_GUI.jpg)
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
-
 ## Output
 
 The results are stored in the output directory in the file ending with "_predict.csv". For a project name, "ananalysis" the output file name of the prediction in the output directory would be "analysis_prediction.csv". The CSV file can be opened in any editor or spreadsheet / excel program.
