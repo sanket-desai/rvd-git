@@ -35,8 +35,8 @@ GUI starts up, wherein you need to provide the input directory with SPC files, p
 ## GUI usage
 User is required to fill the following fields and press <i>Submit</i> to begin processing:
 
-![] [rvdgui]
-[rvdgui]: RVD_GUI.jpg
+![rvdgui] (RVD_GUI.jpg)
+
 ## Output
 
 The results are stored in the output directory in the file ending with "_predict.csv". For a project name, "ananalysis" the output file name of the prediction in the output directory would be "analysis_prediction.csv". The CSV file can be opened in any editor or spreadsheet / excel program.
